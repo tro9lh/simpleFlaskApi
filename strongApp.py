@@ -101,11 +101,7 @@ def notes_list():
 def notes_detail(key):
 
     if request.method == 'PUT':
-        """
-        note = str(request.data.get('text', ''))
-        notes[key] = note
-        return note_repr(key)
-        """
+        
         note = str(request.data.get('text',''))
         args_list = note.split(' ')
         if args_list[6] in hash_sums:
@@ -128,7 +124,7 @@ def notes_detail(key):
 
             return note_repr(idx)
         else:
-            return status.HTTP_403_FORBIDDEN    
+            return status.HTTP_403_FORBIDDEN
     elif request.method == 'DELETE':
         notes.pop(key, None)
         return '', status.HTTP_204_NO_CONTENT
